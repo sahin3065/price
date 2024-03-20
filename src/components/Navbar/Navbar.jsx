@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Link from "../Link/Link";
-import { RiMenu2Line } from "react-icons/ri";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
 
 const Navbar = () => {
@@ -16,15 +16,15 @@ const Navbar = () => {
   ];
 
   return (
-    <nav>
-      <div className="md:hidden text-2xl" onClick={() => setOpen(!open)}>
+    <nav className="bg-yellow-200 p-6">
+      <div className="md:hidden text-2xl " onClick={() => setOpen(!open)}>
         {
           open === true ? <RxCross2></RxCross2>  
-          : <RiMenu2Line className=" "></RiMenu2Line>
+          : <GiHamburgerMenu className=" "></GiHamburgerMenu>
         }
       
       </div>
-       <ul className="md:flex ">
+       <ul className={`md:flex absolute md:static bg-yellow-200 px-6  duration-1000 ${open ? 'top-12' : '-top-60'}`}>
        {
           routes.map(route => <Link key={route.id} route={route}></Link>)
         }
